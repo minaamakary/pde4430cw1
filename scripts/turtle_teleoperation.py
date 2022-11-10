@@ -7,7 +7,7 @@ from geometry_msgs.msg import Twist
 
 def initialise():
 	rospy.init_node('turtle_teleoperation.py', annoymous=True) # init node here
-	mypublisher=rospy.publisher('/turtle1/cmd_vel') # init publisher here
+	mypublisher=rospy.publisher('/turtle1/cmd_vel', Twist, queue_size=10) # init publisher here
 	rospy.rate(10)
 	move_message = Twist()
 	while not rospy.is_shutdown():
@@ -37,6 +37,7 @@ def initialise():
 		move_message.angular.z = 1.0
 		pub.publish(move_message)
 		#move turtle right here
+
 
 if '__name__' == '__main__':
 	initialise()
