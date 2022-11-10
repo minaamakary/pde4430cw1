@@ -20,7 +20,23 @@ def initialise():
 		# move turtle forward here
 	elif key==66:
 		rospy.loginfo("Down key pressed")
+		move_message.linear.x = -1.0
+		move_message.angular.z = 0.0
+		pub.publish(move_message)
 		# move turtle backwards here
+	elif key==67:
+		move_message.linear.x = 0.0
+		move_message.angular.z = -1.0
+		pub.publish(move_message)
+		rospy.loginfo("left key pressed")
+		#move turtle left here
+
+	elif key=68:
+		rospy.loginfo("right key pressed")
+		move_message.linear.x = 0.0
+		move_message.angular.z = 1.0
+		pub.publish(move_message)
+		#move turtle right here
 
 if '__name__' == '__main__':
 	initialise()
