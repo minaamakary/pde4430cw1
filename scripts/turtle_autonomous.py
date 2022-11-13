@@ -7,17 +7,19 @@ def movetoPosition():
 	mypub=rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
 	move_message = Twist()
 	while not rospy.is_shutdown():
-		move_message.linear.x = 1.0
+		move_message.linear.x = 20
 		move_message.angular.z = 0.0
-			
-		move_message.linear.x = -1.0
+		
+		move_message.linear.x = 0.0
+		move_message.angular.z = -20
+
+		move_message.linear.x = -20.0
 		move_message.angular.z = 0.0
 			
 		move_message.linear.x = 0.0
-		move_message.angular.z = 1.0
+		move_message.angular.z = 20.0
 			
-		move_message.linear.x = 0.0
-		move_message.angular.z = -1.0
+		
 			
 		mypub.publish(move_message)
 		rate.sleep()
