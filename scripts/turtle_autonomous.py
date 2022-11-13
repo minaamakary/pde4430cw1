@@ -3,7 +3,7 @@ import rospy
 from geometry_msgs.msg import Twist
 
 def movetoPosition():
-	rospy.init_node('turtle_teleoperation.py', anonymous=False)
+	rospy.init_node('turtle_autonomous.py', anonymous=False)
 	mypub=rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
 	move_message = Twist()
 	while not rospy.is_shutdown():
