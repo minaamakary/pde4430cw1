@@ -2,11 +2,13 @@
 import rospy
 import getch
 from geometry_msgs.msg import Twist
+from turtlesim.msg import Pose
 
 #This is my node
 
+
 def initialise():
-	rospy.init_node('turtle_teleoperation.py', anonymous=False) # init node here
+	rospy.init_node('turtle_teleoperation', anonymous=False) # init node here
 	pub=rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10) # init publisher here
 	rate=rospy.Rate(50)
 	move_message = Twist()
@@ -26,7 +28,7 @@ def initialise():
 		# move turtle backwards here
 		elif key==67:
 			move_message.linear.x = 0.0
-			move_message.angular.z = 1.0
+			move_message.angular.z = -1.0
 			pub.publish(move_message)
 			rospy.loginfo("left key pressed")
 		#move turtle left here
@@ -34,7 +36,7 @@ def initialise():
 		elif key==68:
 			rospy.loginfo("right key pressed")
 			move_message.linear.x = 0.0
-			move_message.angular.z = -1.0
+			move_message.angular.z = 1.0
 			pub.publish(move_message)
 		#move turtle right here
 
