@@ -2,19 +2,21 @@
 import rospy
 from geometry_msgs.msg import Twist
 from turtlesim.msg import Pose
-#move turtle to any given co-ordination on the world
-#def class
-#define position of turtle
-#if turtle is in the centre - move it to point x,y
+
+
 move_message = Twist()
 pubTwo=rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10) # init publisher here
 def callback(data):
 	rospy.loginfo("trial")
-	if ((data.x == 5.544444561004639 and data.y == 5.544444561004639)):
+	
+	if (data.x or data.y):
 		move_message.linear.x = 1.0
-		move_message.angular.z = 0.0
-		pubTwo.publish(move_message) 
-		
+		pubTwo.publish(move_message)
+
+	if (data.x <1 or data.x >10 or data.y < 1 or data.y > 10.0):
+		move_message.linear.x = 0.4
+		move_message.angular.z = 0.8
+		pubTwo.publish(move_message)
 
 
 
@@ -24,8 +26,6 @@ def goToLocation():
 	rospy.spin()
 	rate=rospy.Rate(50)
 	#while not rospy.is_shutdown():
-
-
 
 	rate.sleep()
 

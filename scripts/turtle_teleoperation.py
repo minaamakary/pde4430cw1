@@ -4,7 +4,11 @@ import getch
 from geometry_msgs.msg import Twist
 from turtlesim.msg import Pose
 
-#This is my node
+
+'''
+initialise is the function for controlling the keyboard 
+with a publisher to control the turtle using the keyboard using the arrow keys
+'''
 
 
 def initialise():
