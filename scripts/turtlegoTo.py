@@ -3,6 +3,10 @@ import rospy
 from geometry_msgs.msg import Twist
 from turtlesim.msg import Pose
 
+'''
+this script makes the robot move if it is in the centre and
+it will avoid hitting the wall by going to the opposite direction
+'''
 
 move_message = Twist()
 pubTwo=rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10) # init publisher here
